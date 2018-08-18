@@ -1,0 +1,3 @@
+  <div *ngIf="getValidationErrors() !== null">
+    <div  *ngFor="let error of validationErrors" >{{error.message}}</div>
+  </div>

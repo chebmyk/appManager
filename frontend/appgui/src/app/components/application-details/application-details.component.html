@@ -1,0 +1,60 @@
+<div>
+  <form [formGroup]="appForm" (ngSubmit)="save()">
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="id" formControlName="id" readonly>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Name" formControlName="name">
+        <mat-error>
+          <field-validation [control] = "appForm.controls.name" ></field-validation>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-select placeholder="Types" formControlName="type">
+          <mat-option *ngFor="let type of app_types" [value]="type.value">
+            {{type.value}}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <field-validation [control] = "appForm.controls.type" ></field-validation>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div style="margin: 10px">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Content Types</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-selection-list formControlName="content_types">
+            <mat-list-option [disabled]="readOnly" checkboxPosition="before"  *ngFor="let contentType of app_ContentTypes" [value]="contentType.value">
+              {{contentType.value}}
+            </mat-list-option>
+          </mat-selection-list>
+          </mat-card-content>
+          <mat-card-footer>
+          </mat-card-footer>
+        </mat-card>
+        <mat-error>
+          <field-validation [control] = "appForm.controls.content_types" ></field-validation>
+        </mat-error>
+    </div>
+    <div formGroupName="user">
+      <mat-form-field>
+        <input matInput placeholder="Owner"  formControlName="name" readonly>
+      </mat-form-field>
+      <mat-error>
+        <field-validation [control] = "appForm.controls.user"></field-validation>
+      </mat-error>
+    </div>
+    <div>
+      <button mat-raised-button type="button" [routerLink]="['..']">Back</button>
+      <button *ngIf="canUpdate || canCreate" mat-raised-button type="submit" [disabled]="appForm.untouched">Save</button>
+    </div>
+  </form>
+</div>

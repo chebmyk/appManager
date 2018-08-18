@@ -1,0 +1,15 @@
+GET http://localhost:8080/api/apps
+Authorization: Basic YWRtaW5AZW1haWwuY29tOmFkbWlu
+###
+
+
+GET http://localhost:8080/api/auth
+Authorization: Basic YWRtaW5AZW1haWwuY29tOmFkbWlu
+
+###
+
+GET http://localhost:8080/api/apps/3
+Authorization: Basic YWRtaW5AZW1haWwuY29tOmFkbWlu
+
+
+###

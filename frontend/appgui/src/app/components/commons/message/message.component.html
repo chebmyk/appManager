@@ -1,0 +1,9 @@
+<div *ngIf="messageService.messages.length" style="width: 100%">
+<!--  <button class="clear" (click)="messageService.clear()"><mat-icon>clear_all</mat-icon></button>-->
+  <mat-chip-list #chipList>
+    <mat-chip *ngFor="let message of messageService.messages" (removed)="messageService.remove(message)" style="width: 100%" class="{{ cssClass(message) }} alert-dismissable">
+      {{message.description}}
+      <mat-icon style="float: right" matChipRemove>&times;</mat-icon>
+    </mat-chip>
+  </mat-chip-list>
+</div>

@@ -1,0 +1,15 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.mat-toolbar.mat-primary {
+  top: 0;
+}
+
+.active-link {
+  background-color: rgba(128, 128, 128, 0.4);
+}

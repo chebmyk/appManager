@@ -1,0 +1,11 @@
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-raised-button{
+  margin: 5px;
+  text-align: center;
+  border-radius: 5px;
+}
+

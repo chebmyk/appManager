@@ -1,0 +1,14 @@
+mat-card {
+  max-width: 450px;
+  margin: 2em auto;
+  text-align: center;
+  border-radius: .5rem;
+}
+
+.full-width-input {
+  width: 100%;
+}
+
+mat-form-field{
+  line-height: 2.1;
+}

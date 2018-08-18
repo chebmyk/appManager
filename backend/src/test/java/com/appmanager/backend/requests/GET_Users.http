@@ -1,0 +1,19 @@
+GET http://localhost:8080/api/users
+Authorization: Basic YWRtaW5AZW1haWwuY29tOmFkbWlu
+###
+
+GET http://localhost:8080/api/users/pages?page=0&size=2
+Authorization: Basic YWRtaW5AZW1haWwuY29tOmFkbWlu
+###
+
+GET http://localhost:8080/api/users/pages?page=1&size=2
+###
+
+GET http://localhost:8080/api/users/3
+Authorization: Basic YWRtaW5AZW1haWwuY29tOmFkbWlu
+###
+
+GET http://localhost:8080/api/users/8
+###
+
+

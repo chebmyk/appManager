@@ -1,0 +1,18 @@
+PUT http://localhost:8080/api/apps
+Content-Type: application/json
+Authorization: Basic YWRtaW5AZW1haWwuY29tOmFkbWlu
+
+{
+    "id": 3,
+      "name": "Company",
+      "type": "WEB",
+      "contentTypes": [],
+      "user": {
+        "id": 1,
+        "name": "user",
+        "email": "publisher@email.com",
+        "role": "PUBLISHER"
+      }
+  }
+
+###

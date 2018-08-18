@@ -1,0 +1,29 @@
+<div class="signin-content">
+  <mat-card>
+    <mat-card-content>
+      <h1>Login</h1>
+      <app-message></app-message>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div>
+        <mat-form-field class="full-width-input">
+          <input matInput type="text" placeholder="Email" formControlName="email" class="form-control"/>
+          <mat-error>
+            <field-validation [control]="loginForm.controls.email"></field-validation>
+          </mat-error>
+        </mat-form-field>
+        </div>
+        <div>
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" placeholder="Password" formControlName="password" class="form-control"/>
+         <mat-error>
+           <field-validation [control]="loginForm.controls.password"></field-validation>
+         </mat-error>
+        </mat-form-field>
+        </div>
+        <div  class="form-group">
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,27 @@
+POST http://localhost:8080/api/users
+Content-Type: application/json
+Authorization: Basic YWRtaW5AZW1haWwuY29tOmFkbWlu
+
+{
+  "name": "user2",
+  "email": "user2@email.com",
+  "role": "PUBLISHER"
+}
+###
+
+POST http://localhost:8080/api/users/batch
+Content-Type: application/json
+
+[
+{
+   "name": "admin2",
+   "email": "admin2@email.com",
+   "role": "ADMIN"
+ },
+ {
+   "name": "adops2",
+   "email": "adops2@email.com",
+   "role": "ADOPS"
+ }
+]
+###

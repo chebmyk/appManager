@@ -1,0 +1,33 @@
+POST http://localhost:8080/api/apps
+Content-Type: application/json
+Authorization: Basic YWRtaW5AZW1haWwuY29tOmFkbWlu
+
+ {
+ "name":"Microsft22",
+ "type":"WEB",
+ "contentTypes":["VIDEO"],
+ "user": {
+             "id": 1,
+                 "name": "hhhh",
+                 "email": "hhh@email.com",
+                 "role": "ADMIN"
+         }
+  }
+###
+
+POST http://localhost:8080/api/apps/batch
+Content-Type: application/json
+Authorization: Basic YWRtaW5AZW1haWwuY29tOmFkbWlu
+
+ [{
+ "name":"Yahoo",
+ "type":"WEB",
+ "contentTypes":["VIDEO","IMAGE"]
+  },
+  {
+   "name":"Skype",
+   "type":"WEB",
+   "contentTypes":["HTML"]
+   }
+  ]
+###
