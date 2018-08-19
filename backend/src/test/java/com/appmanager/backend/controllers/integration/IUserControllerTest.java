@@ -2,12 +2,11 @@ package com.appmanager.backend.controllers.integration;
 
 import com.appmanager.backend.BackendApplication;
 import com.appmanager.backend.domain.dto.SecurityDTO;
+import com.appmanager.backend.domain.dto.UserDTO;
 import com.appmanager.backend.domain.entities.User;
 import com.appmanager.backend.domain.entities.UserRole;
-import com.appmanager.backend.domain.dto.UserDTO;
 import com.appmanager.backend.services.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.modelmapper.ModelMapper;
@@ -22,7 +21,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.hamcrest.Matchers.notNullValue;
-import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -47,11 +45,6 @@ public class IUserControllerTest {
 
     @Autowired
     private ModelMapper mapper;
-
-    @Before
-    public void setUp() throws Exception {
-
-    }
 
     @Test
     @WithMockUser(value = "admin@email.com", roles = "ADMIN")
@@ -142,7 +135,7 @@ public class IUserControllerTest {
     @Test
     @WithMockUser(value = "admin@email.com", roles = "ADMIN")
     public void updateUser() throws Exception {
-        User user = userService.findById(1);
+        User user = userService.findById(2);
         UserDTO userDto = mapper.map(user, UserDTO.class);
         userDto.setName("user_updted");
         ObjectMapper mapper = new ObjectMapper();
