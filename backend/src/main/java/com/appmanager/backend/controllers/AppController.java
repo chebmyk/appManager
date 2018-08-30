@@ -35,21 +35,13 @@ public class AppController {
                 .stream()
                 .map(app -> mapper.map(app, ApplicationWithUserDTO.class))
                 .collect(Collectors.toList());
-        /*if (result.size() > 0) {*/
             return ResponseEntity.ok(result);
-        /*} else {
-            throw new EmptyResultDataAccessException(1);
-        }*/
     }
 
     @GetMapping(value = "/pages", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllApplications(Pageable pageRequest) {
         Page<ApplicationWithUserDTO> result = applicationService.findAll(pageRequest).map(app ->mapper.map(app,ApplicationWithUserDTO.class));
-//        if (result.getTotalElements() > 0) {
-            return ResponseEntity.ok(result);
-       /* } else {
-            throw new EmptyResultDataAccessException(1);
-        }*/
+        return ResponseEntity.ok(result);
     }
 
 
@@ -60,7 +52,6 @@ public class AppController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addApplication(@RequestBody ApplicationWithUserDTO application) {
-        log.info("Adding application " + application.getName());
         App appEntity = mapper.map(application, App.class);
         return ResponseEntity.ok(mapper.map(applicationService.save(appEntity), ApplicationWithUserDTO.class) );
     }
@@ -74,7 +65,6 @@ public class AppController {
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity updateApplication(@RequestBody ApplicationWithUserDTO application) {
-        log.info("Going to update  application: " + application.getName());
         App appEntity = mapper.map(application, App.class);
         return ResponseEntity.ok(mapper.map(applicationService.update(appEntity), ApplicationWithUserDTO.class));
     }
