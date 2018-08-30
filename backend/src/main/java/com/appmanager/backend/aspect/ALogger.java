@@ -14,12 +14,12 @@ public class ALogger {
     @Before("(@annotation(org.springframework.web.bind.annotation.PostMapping) || @annotation(org.springframework.web.bind.annotation.PutMapping))" +
             "&& args(obj))")
     void beforeModifyLog(JoinPoint jpoint, Object obj) {
-        log.info("Calling "  + jpoint.getTarget().getClass().getSimpleName()+"." + jpoint.getSignature().getName() + ": params " + obj.toString());
+        log.info("Calling "  + jpoint.getTarget().getClass().getSimpleName() + "." + jpoint.getSignature().getName() + ": params " + obj.toString());
     }
 
     @Before("(@annotation(org.springframework.web.bind.annotation.DeleteMapping))" +
             "&& args(id))")
     void beforeDeleteLog(JoinPoint jpoint, Integer id) {
-        log.info("Calling " + jpoint.getTarget().getClass().getSimpleName()+"." + jpoint.getSignature().getName() + ": id=" + id);
+        log.info("Calling " + jpoint.getTarget().getClass().getSimpleName() + "." + jpoint.getSignature().getName() + ": id=" + id);
     }
 }
