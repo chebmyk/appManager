@@ -53,7 +53,6 @@ public class ApplicationServiceImpl implements ApplicationService {
     @PreAuthorize("hasPermission(#application,'CREATE')")
     public App save(App application) {
         App app = repository.save(application);
-        log.info("Application [" + application.getName() + "] was successfully saved");
         return app;
     }
 
@@ -61,14 +60,12 @@ public class ApplicationServiceImpl implements ApplicationService {
     @PreAuthorize("hasPermission(#id,'App','DELETE')")
     public void delete(Integer id) {
         repository.deleteById(id);
-        log.info("Application [" + id + "] was successfully deleted");
     }
 
     @Override
     @PreAuthorize("hasPermission(#application,'UPDATE')")
     public App update(App application) {
         App app = repository.save(application);
-        log.info("Application id [" + app.getId() + "] was successfully updated");
         return app;
     }
 

@@ -58,7 +58,6 @@ public class AppController {
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity deleteApplication(@PathVariable Integer id) {
-        log.info("Going to remove application id: " + id);
         applicationService.delete(id);
         return ResponseEntity.ok("{\"result\": \"Application with id[" + id + "] was successfully removed\"}");
     }

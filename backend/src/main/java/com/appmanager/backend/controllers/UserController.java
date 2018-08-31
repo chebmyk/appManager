@@ -60,27 +60,23 @@ public class UserController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addUser(@RequestBody SecurityDTO credentials) {
-        log.info("Going to add user " + credentials.getUser().getName());
         Security credentialsEntity = mapper.map(credentials, Security.class);
         return ResponseEntity.ok(mapper.map(userService.save(credentialsEntity), UserDTO.class));
     }
 
     @PostMapping(value = "/batch", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addUsers(@RequestBody List<UserDTO> users) {
-        log.info("Going to add users count: " + users.size());
         return ResponseEntity.ok(userService.saveAll(users.stream().map(usr -> mapper.map(usr, User.class)).collect(Collectors.toList())));
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity deleteUser(@PathVariable int id) {
-        log.info("Going to delete user with id " + id);
         userService.delete(id);
         return ResponseEntity.ok("{\"result\": \"User with id[" + id + "] was successfully removed\"}");
     }
 
     @PostMapping
     public ResponseEntity deleteUsers(@RequestBody int[] userIds) {
-        log.info("Going to delete users with ids " + userIds);
         try {
             Collection deleteList = Arrays.asList(userIds);
             userService.bulkDelete(deleteList);
@@ -92,21 +88,18 @@ public class UserController {
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity updateUser(@RequestBody UserDTO user) {
-        log.info("Going to update user " + user.getName());
         User userEntity = mapper.map(user, User.class);
         return ResponseEntity.ok(mapper.map(userService.update(userEntity), UserDTO.class));
     }
 
     @PutMapping(value = "/{id}/password", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity resetPassword(@PathVariable int id, @RequestBody SecurityDTO credentials) {
-        log.info("Going to update password for user " + credentials.getUser().getName());
         userService.savePassword(mapper.map(credentials, Security.class));
         return ResponseEntity.ok().build();
     }
 
     @PutMapping (value = "/{id}/password/check", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity checkPassword(@PathVariable int id, @RequestBody SecurityDTO credentials) {
-        log.info("Going to check password for user " + credentials.getUser().getName());
         boolean isMatch = userService.checkPassword(mapper.map(credentials, Security.class));
         return isMatch ? ResponseEntity.ok().build(): ResponseEntity.notFound().build();
     }

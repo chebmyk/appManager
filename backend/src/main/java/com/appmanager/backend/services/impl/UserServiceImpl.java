@@ -60,7 +60,6 @@ public class UserServiceImpl implements UserService {
     @PreAuthorize("hasPermission(#credentials.user,'CREATE')")
     public User save(Security credentials) {
         User usr = repository.save(mapper.map(credentials.getUser(), User.class));
-        log.info("User [" + credentials.getUser().getName() + "] was successfully saved");
         credentials.setUser(usr);
         savePassword(credentials);
         return usr;
@@ -70,7 +69,6 @@ public class UserServiceImpl implements UserService {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<User> saveAll(List<User> users) {
         List<User> savedUsers = repository.saveAll(users);
-        log.info("Users count [" + savedUsers.size() + "] were successfully saved");
         return savedUsers;
     }
 
@@ -92,7 +90,6 @@ public class UserServiceImpl implements UserService {
     @PreAuthorize("hasPermission(#user,'UPDATE')")
     public User update(User user) {
         User usr = repository.save(user);
-        log.info("User id [" + usr.getId() + "] was successfully updated");
         return usr;
     }
 
