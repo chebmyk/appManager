@@ -1,6 +1,6 @@
 --//USERS ROLES [ADMIN,PUBLISHER,ADOPS]
-INSERT INTO User (id ,name, email, role) VALUES  (1, 'admin', 'admin@email.com','ADMIN');
-INSERT INTO User (id, name, email, role) VALUES  (2, 'user', 'user@email.com','PUBLISHER');
+INSERT INTO User (id ,name, email, role) VALUES  (1, 'admin', 'forreg@i.ua','ADMIN');
+INSERT INTO User (id, name, email, role) VALUES  (2, 'user', 'forreg1@i.ua','PUBLISHER');
 INSERT INTO User (id, name, email, role) VALUES  (3, 'ops', 'ops@email.com','ADOPS');
 INSERT INTO User (id, name, email, role) VALUES(4,'ops4','ops4@email.com','ADOPS');
 INSERT INTO User (id, name, email, role) VALUES(5,'ops5','ops5@email.com','ADOPS');

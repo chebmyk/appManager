@@ -3,6 +3,7 @@ package com.appmanager.backend.services.impl;
 import com.appmanager.backend.domain.entities.Security;
 import com.appmanager.backend.domain.entities.User;
 import com.appmanager.backend.repositories.UserRepository;
+import com.appmanager.backend.services.MailService;
 import com.appmanager.backend.services.UserService;
 import com.appmanager.backend.services.impl.security.AuthServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +29,9 @@ public class UserServiceImpl implements UserService {
     private final ModelMapper mapper;
     private UserRepository repository;
     private AuthServiceImpl authService;
+
+    @Autowired
+    private MailService mailService;
 
     @Autowired
     public UserServiceImpl(UserRepository repository, ModelMapper mapper, AuthServiceImpl authService) {
@@ -100,6 +104,7 @@ public class UserServiceImpl implements UserService {
     @PreAuthorize("hasPermission(#credentials, 'UPDATE')")
     public void savePassword(Security credentials) {
         authService.savePassword(credentials);
+        mailService.send(credentials.getUser().getEmail(),"Password changed", "Passwords was changed for "+credentials.getUser().getEmail());
     }
 
     @Override
