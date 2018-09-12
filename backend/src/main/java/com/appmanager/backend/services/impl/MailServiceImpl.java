@@ -29,6 +29,7 @@ public class MailServiceImpl implements MailService {
             helper.setSubject(subject);
             helper.setText(template);
             emailSender.send(message);
+            log.info("Sending email to: [" + to + "]");
         } catch (MessagingException e) {
             log.error(e.getMessage());
         }
